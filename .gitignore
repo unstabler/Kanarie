@@ -1,0 +1,16 @@
+.kdev4
+build
+*~
+.*kate-swp
+*.log
+
+CMakeCache.txt
+CMakeFiles
+CMakeScripts
+Makefile
+cmake_install.cmake
+install_manifest.txt
+CTestTestfile.cmake
+
+
+__XD_CHEESEKUN_KAWAII__
