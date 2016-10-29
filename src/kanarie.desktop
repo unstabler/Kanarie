@@ -1,38 +1,14 @@
 [Desktop Entry]
-Name=kanarie
-Name[ca]=kanarie
-Name[ca@valencia]=kanarie
-Name[cs]=kanarie
-Name[da]=kanarie
-Name[de]=kanarie
-Name[en_GB]=kanarie
-Name[es]=kanarie
-Name[et]=kanarie
-Name[fi]=kanarie
-Name[gl]=kanarie
-Name[it]=kanarie
-Name[ko]=kanarie
-Name[nl]=kanarie
-Name[pl]=kanarie
-Name[pt]=kanarie
-Name[pt_BR]=kanarie
-Name[ru]=kanarie
-Name[sk]=kanarie
-Name[sl]=kanarie
-Name[sr]=kanarie
-Name[sr@ijekavian]=kanarie
-Name[sr@ijekavianlatin]=kanarie
-Name[sr@latin]=kanarie
-Name[sv]=kanarie
-Name[tr]=kanarie
-Name[uk]=kanarie
+Name=Kanarie
 Name[x-test]=xxkanariexx
-Name[zh_TW]=kanarie
+
 Exec=kanarie
 Icon=kanarie
 Type=Application
 X-DocPath=kanarie/index.html
+
 GenericName=A Simple Application written with KDE Frameworks
+GenericName[ja]=菅野美穂
 GenericName[ca]=Una aplicació senzilla escrita amb els Frameworks del KDE
 GenericName[ca@valencia]=Una aplicació senzilla escrita amb els Frameworks del KDE
 GenericName[da]=Et simpelt program skrevet med KDE Frameworks

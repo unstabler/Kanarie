@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>AccountSettings</class>
+ <widget class="QWidget" name="AccountSettings">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>708</width>
+    <height>610</height>
+   </rect>
+  </property>
+  <layout class="QHBoxLayout" name="horizontalLayout">
+   <item>
+    <widget class="QListWidget" name="listWidget"/>
+   </item>
+   <item alignment="Qt::AlignTop">
+    <widget class="QGroupBox" name="groupBox">
+     <property name="title">
+      <string/>
+     </property>
+     <layout class="QVBoxLayout" name="verticalLayout">
+      <item>
+       <widget class="QPushButton" name="addAccountButton">
+        <property name="text">
+         <string>&amp;Add Account</string>
+        </property>
+        <property name="icon">
+         <iconset theme="list-add-user">
+          <normaloff>.</normaloff>.</iconset>
+        </property>
+        <property name="flat">
+         <bool>false</bool>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QPushButton" name="editAccountSettingsButton">
+        <property name="text">
+         <string>&amp;Edit Account Settings</string>
+        </property>
+        <property name="icon">
+         <iconset theme="settings-configure">
+          <normaloff>.</normaloff>.</iconset>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QPushButton" name="deleteAccountButton">
+        <property name="text">
+         <string>&amp;Delete Account</string>
+        </property>
+        <property name="icon">
+         <iconset theme="list-remove">
+          <normaloff>.</normaloff>.</iconset>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </widget>
+   </item>
+  </layout>
+ </widget>
+ <includes>
+  <include location="local">kcolorbutton.h</include>
+ </includes>
+ <resources/>
+ <connections/>
+</ui>

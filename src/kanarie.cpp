@@ -19,24 +19,27 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
 // application headers
-#include "kanarie.h"
+#include "kanarie.hpp"
 
 // KDE headers
 #include <KActionCollection>
 #include <KConfigDialog>
 
+#include "ui/settings/accounts.hpp"
+
 Kanarie::Kanarie()
-    : KXmlGuiWindow()
+    : KXmlGuiWindow(),
+      postArea(new KanarieUI::PostArea(this))
 {
-    m_kanarieView = new KanarieView(this);
-    setCentralWidget(m_kanarieView);
-    m_switchAction = actionCollection()->addAction(QStringLiteral("switch_action"), this, SLOT(slotSwitchColors()));
-    m_switchAction->setText(i18n("Switch Colors"));
-    m_switchAction->setIcon(QIcon::fromTheme(QStringLiteral("fill-color")));
-    connect(m_switchAction, SIGNAL(triggered(bool)), m_kanarieView, SLOT(slotSwitchColors()));
-    KStandardAction::openNew(this, SLOT(fileNew()), actionCollection());
-    KStandardAction::quit(qApp, SLOT(closeAllWindows()), actionCollection());
-    KStandardAction::preferences(this, SLOT(settingsConfigure()), actionCollection());
+    setCentralWidget(postArea);
+
+    KStandardAction::quit(
+        qApp, SLOT(closeAllWindows()), actionCollection()
+    );
+    KStandardAction::preferences(
+        this, SLOT(settingsConfigure()), actionCollection()
+    );
+    
     setupGUI();
 }
 
@@ -44,29 +47,36 @@ Kanarie::~Kanarie()
 {
 }
 
-void Kanarie::fileNew()
-{
-    qCDebug(KANARIE) << "Kanarie::fileNew()";
-    (new Kanarie)->show();
-}
-
 void Kanarie::settingsConfigure()
 {
     qCDebug(KANARIE) << "Kanarie::settingsConfigure()";
-    // The preference dialog is derived from prefs_base.ui
-    //
-    // compare the names of the widgets in the .ui file
-    // to the names of the variables in the .kcfg file
-    //avoid to have 2 dialogs shown
+    
     if (KConfigDialog::showDialog(QStringLiteral("settings"))) {
         return;
     }
-    KConfigDialog *dialog = new KConfigDialog(this, QStringLiteral("settings"), KanarieSettings::self());
+    
+    KConfigDialog *settingsDialog = new KConfigDialog(
+        this, 
+        QStringLiteral("settings"), 
+        KanarieSettings::self()
+    );
+    
+    settingsDialog->addPage(
+        new KanarieUI::Settings::Accounts(settingsDialog),
+        i18n("Accounts"),
+        QStringLiteral("package_setting")
+    );
+    settingsDialog->setAttribute(Qt::WA_DeleteOnClose);
+    settingsDialog->show();
+    qCDebug(KANARIE) << "Kanarie::settingsConfigure(): settingsDialog->show()";
+    
+    /*
     QWidget *generalSettingsDialog = new QWidget;
     settingsBase.setupUi(generalSettingsDialog);
     dialog->addPage(generalSettingsDialog, i18n("General"), QStringLiteral("package_setting"));
+    */
+    /*
     connect(dialog, SIGNAL(settingsChanged(QString)), m_kanarieView, SLOT(slotSettingsChanged()));
-    dialog->setAttribute(Qt::WA_DeleteOnClose);
-    dialog->show();
+    */
 }
 

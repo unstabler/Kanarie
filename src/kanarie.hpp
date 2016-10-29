@@ -18,16 +18,19 @@ You should have received a copy of the GNU General Public License
 along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
-#ifndef KANARIE_H
-#define KANARIE_H
+#ifndef __KANARIE_HPP__
+#define __KANARIE_HPP__
 
 #include <QLoggingCategory>
 #include <KXmlGuiWindow>
+#include <KConfigDialog>
 
 #include "ui_kanarieViewBase.h"
 #include "ui_settingsBase.h"
 #include "KanarieSettings.h"
 #include "kanarieview.h"
+
+#include "ui/widget/postarea.hpp"
 
 Q_DECLARE_LOGGING_CATEGORY(KANARIE)
 
@@ -55,11 +58,6 @@ public:
 
 private slots:
     /**
-     * Create a new window
-     */
-    void fileNew();
-
-    /**
      * Open the settings dialog
      */
     void settingsConfigure();
@@ -67,10 +65,11 @@ private slots:
 private:
     // this is the name of the root widget inside our Ui file
     // you can rename it in designer and then change it here
-    Ui::settingsBase settingsBase;
-    Ui::kanarieViewBase kanarieViewBase;
-    QAction *m_switchAction;
-    KanarieView *m_kanarieView;
+    // Ui::settingsBase settingsBase;
+    // Ui::kanarieViewBase kanarieViewBase;
+    // QAction *m_switchAction;
+    // KanarieView *m_kanarieView;
+    KanarieUI::PostArea *postArea;
 };
 
-#endif // KANARIE_H
+#endif // __KANARIE_HPP__

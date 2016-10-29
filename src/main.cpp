@@ -19,7 +19,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
 // application header
-#include "kanarie.h"
+#include "kanarie.hpp"
 
 // KDE headers
 #include <KAboutData>
@@ -31,21 +31,32 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #include <QIcon>
 #include <QLoggingCategory>
 
+#define KANARIE_APP_VERSION  "0"
+#define KANARIE_APP_CODENAME "Shirohto"
+
 Q_DECLARE_LOGGING_CATEGORY(KANARIE)
 Q_LOGGING_CATEGORY(KANARIE, "kanarie")
+
 int main(int argc, char **argv)
 {
     QApplication application(argc, argv);
 
     KLocalizedString::setApplicationDomain("kanarie");
-    KAboutData aboutData( QStringLiteral("kanarie"),
-                          i18n("Simple App"),
-                          QStringLiteral("%{VERSION}"),
-                          i18n("A Simple Application written with KDE Frameworks"),
-                          KAboutLicense::GPL,
-                          i18n("(c) %{CURRENT_YEAR}, %{AUTHOR} <%{EMAIL}>"));
+    KAboutData aboutData(QStringLiteral("kanarie"),
+                         i18n("Kanarie"),
+                         QString("%1 \"%2\"").arg(KANARIE_APP_VERSION, KANARIE_APP_CODENAME),
+                         i18n("ついったーくらいあんと"),
+                         KAboutLicense::GPL_V3,
+                         i18n("(c) 2016 cheesekun★ <doping.cheese@gmail.com>"),
+                         i18n("Inspired by <a href=\"http://azurea.info\">Azurea for Windows</a>"),
+                         QStringLiteral("http://kanarie.unstabler.pl"));
 
-    aboutData.addAuthor(i18n("%{AUTHOR}"),i18n("Author"), QStringLiteral("%{EMAIL}"));
+    aboutData.addAuthor(QStringLiteral("cheesekun★ (@cheese_rulez)"), 
+                        i18n("Author"), 
+                        QStringLiteral("doping.cheese@gmail.com"), 
+                        QStringLiteral("https://twitter.com/cheese_rulez"));
+    
+    
     application.setWindowIcon(QIcon::fromTheme("kanarie"));
     QCommandLineParser parser;
     parser.addHelpOption();

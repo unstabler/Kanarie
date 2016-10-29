@@ -35,16 +35,19 @@ KanarieView::~KanarieView()
 
 void KanarieView::slotSwitchColors()
 {
+    /**
     // switch the foreground/background colors of the label
     QColor color = KanarieSettings::color_background();
     KanarieSettings::setColor_background(KanarieSettings::color_foreground());
     KanarieSettings::setColor_foreground(color);
 
     slotSettingsChanged();
+    */
 }
 
 void KanarieView::slotSettingsChanged()
 {
+    /**
     qCDebug(KANARIE) << "KanarieView::slotSettingsChanged()";
     QPalette palette;
     palette.setColor(QPalette::Window, KanarieSettings::color_background());
@@ -54,5 +57,6 @@ void KanarieView::slotSettingsChanged()
     // i18n : internationalization
     m_ui.templateLabel->setText(i18n("This project is %1 days old", KanarieSettings::val_time()));
     emit signalChangeStatusbar(i18n("Settings changed"));
+    */
 }
 
